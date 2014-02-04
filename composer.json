@@ -1,0 +1,13 @@
+{
+	"require": {
+		"silex/silex": "*",
+		"twig/twig": ">=1.8,<2.0-dev",
+		"squizlabs/php_codesniffer": "1.*"
+	},
+	"autoload": {
+		"psr-0": {
+			"Blog\\": "class/"
+		},
+		"classmap": ["pages/"]
+	}
+}
