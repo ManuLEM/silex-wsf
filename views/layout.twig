@@ -1,19 +1,27 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+	<head>
+        {% block head %}
+			<meta charset="UTF-8">
+    		<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+            <title>Blog | {% block title %}{% endblock %}</title>
+            <link rel="stylesheet" href="{{ app.request.basepath }}/css/normalize.css" />
+            <link rel="stylesheet" href="{{ app.request.basepath }}/css/style.css" />
+        {% endblock %}
+    </head>
 </head>
 <body>
 	<header>
 		<nav>
 			<ul>
 				<li><a href="{{ app.url_generator.generate('home') }}">Home</a></li>
-				{% if app.session.get('user').name is not defined %}
+				{% if user is not defined %}
 					<li><a href="{{ app.url_generator.generate('login') }}">Login</a></li>
 					<li><a href="{{ app.url_generator.generate('register') }}">Créer un compte</a></li>
-				{% elseif app.session.get('user').type == 'admin' %}
+				{% elseif type == 'admin' %}
 					<li><a href="{{ app.url_generator.generate('getAdmin') }}">Admin</a></li>
+					<li><a href="{{ app.url_generator.generate('getTags') }}">Add tag</a></li>
 				{% endif %}
 			</ul>
 		</nav>

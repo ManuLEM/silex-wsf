@@ -346,54 +346,6 @@
         "homepage": "http://symfony.com"
     },
     {
-        "name": "pimple/pimple",
-        "version": "v1.1.0",
-        "version_normalized": "1.1.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fabpot/Pimple.git",
-            "reference": "471c7d7c52ad6594e17b8ec33efdd1be592b5d83"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fabpot/Pimple/zipball/471c7d7c52ad6594e17b8ec33efdd1be592b5d83",
-            "reference": "471c7d7c52ad6594e17b8ec33efdd1be592b5d83",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "time": "2013-09-19 04:53:08",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.1.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Pimple": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "Pimple is a simple Dependency Injection Container for PHP 5.3",
-        "homepage": "http://pimple.sensiolabs.org",
-        "keywords": [
-            "container",
-            "dependency injection"
-        ]
-    },
-    {
         "name": "silex/silex",
         "version": "v1.1.2",
         "version_normalized": "1.1.2.0",
@@ -529,5 +481,173 @@
         "keywords": [
             "templating"
         ]
+    },
+    {
+        "name": "pimple/pimple",
+        "version": "v1.1.1",
+        "version_normalized": "1.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fabpot/Pimple.git",
+            "reference": "2019c145fe393923f3441b23f29bbdfaa5c58c4d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fabpot/Pimple/zipball/2019c145fe393923f3441b23f29bbdfaa5c58c4d",
+            "reference": "2019c145fe393923f3441b23f29bbdfaa5c58c4d",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2013-11-22 08:30:29",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Pimple": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Pimple is a simple Dependency Injection Container for PHP 5.3",
+        "homepage": "http://pimple.sensiolabs.org",
+        "keywords": [
+            "container",
+            "dependency injection"
+        ]
+    },
+    {
+        "name": "symfony/security-core",
+        "version": "v2.4.1",
+        "version_normalized": "2.4.1.0",
+        "target-dir": "Symfony/Component/Security/Core",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/security-core.git",
+            "reference": "c0396b13041d8fcf187174d4740b5fabe2624b37"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/security-core/zipball/c0396b13041d8fcf187174d4740b5fabe2624b37",
+            "reference": "c0396b13041d8fcf187174d4740b5fabe2624b37",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "ircmaxell/password-compat": "1.0.*",
+            "psr/log": "~1.0",
+            "symfony/event-dispatcher": "~2.1",
+            "symfony/expression-language": "~2.4",
+            "symfony/http-foundation": "~2.4",
+            "symfony/validator": "~2.2"
+        },
+        "suggest": {
+            "ircmaxell/password-compat": "For using the BCrypt password encoder in PHP <5.5",
+            "symfony/event-dispatcher": "",
+            "symfony/expression-language": "For using the expression voter",
+            "symfony/http-foundation": "",
+            "symfony/validator": "For using the user password constraint"
+        },
+        "time": "2014-01-01 08:14:50",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Component\\Security\\Core\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Security Component - Core Library",
+        "homepage": "http://symfony.com"
+    },
+    {
+        "name": "symfony/security-csrf",
+        "version": "v2.4.1",
+        "version_normalized": "2.4.1.0",
+        "target-dir": "Symfony/Component/Security/Csrf",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/security-csrf.git",
+            "reference": "67c366a65a5bbcbcb2db7d4d4e45a16b85f24797"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/security-csrf/zipball/67c366a65a5bbcbcb2db7d4d4e45a16b85f24797",
+            "reference": "67c366a65a5bbcbcb2db7d4d4e45a16b85f24797",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "symfony/security-core": "~2.4"
+        },
+        "require-dev": {
+            "symfony/http-foundation": "~2.1"
+        },
+        "suggest": {
+            "symfony/http-foundation": "For using the class SessionTokenStorage."
+        },
+        "time": "2013-11-21 06:37:18",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Component\\Security\\Csrf\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Security Component - CSRF Library",
+        "homepage": "http://symfony.com"
     }
 ]

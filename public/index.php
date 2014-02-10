@@ -30,14 +30,7 @@
 
 	$app->get('/admin', function() use($app) {
 		$c = new AdminController($app);
-		if ($app['session']->get('user')['type'] !== 'admin') {
-			return $app->redirect(
-	            $app['url_generator']->generate('home')
-	        );
-		}
-		else{
-			return $c->getArticle();
-		}
+		return $c->getArticle();
 	})
 	->bind('getAdmin');
 
@@ -71,10 +64,28 @@
 	})
 	->bind('postRegister');
 
+	$app->get('/add_tag', function() use($app) {
+		$c = new AdminController($app);
+		return $c->getTags();
+	})
+	->bind('getTags');
+
+	$app->post('/add_tag', function() use($app) { 
+		$c = new AdminController($app);
+		return $c->postTags();
+	})
+	->bind('postTags');
+
 	$app->get('/tagsearch/{tagId}', function($tagId) use($app) { 
-		$c = new UserController($app);
-		return $c->getRegister();
+		$c = new HomeController($app);
+		return $c->tagSearch($tagId);
 	})
 	->bind('tagSearch');
+
+	$app->get('/article/{articleId}', function($articleId) use($app) { 
+		$c = new HomeController($app);
+		return $c->renderArticle($articleId);
+	})
+	->bind('renderArticle');
 
 	$app->run();

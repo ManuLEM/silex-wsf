@@ -1,4 +1,5 @@
 {% extends 'layout.twig' %}
+{% block title %}Add Artcile{% endblock %}
 
 {% block content %}
 	<form action="" method="post">
@@ -6,6 +7,11 @@
 		<input type="text" name="title" />
 		<label for="article">article : </label>
 		<textarea name="article"></textarea>
-		<input type="submit" value="envoyer">
+		<select name="tags[]" multiple>
+			{% for key, tag in tags %}
+				<option value="{{ key }}">{{ tag.name }}</option>
+			{% endfor %}
+		</select>
+		<input type="submit" value="send">
 	</form>
 {% endblock %}

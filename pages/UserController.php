@@ -38,8 +38,7 @@ Class UserController extends Controller
 		$user = array(
 			'id' => $user['id'],
 			'name' => $user['name'],
-			'email' => $user['email'],
-			'type' => $user['type']
+			'email' => $user['email']
 		);
 		
 		$this->app['session']->set('user', $user);

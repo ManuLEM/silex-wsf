@@ -1,19 +1,23 @@
 {% extends 'layout.twig' %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
-	<h1>Index</h1>
+	<h1>Article list :</h1>
 	<section>
-		{% for article in articles %}
+		{% for articleKey, article in articles %}
 			<article>
-				<h2>{{ article.title }}</h2>
-				<p>
-					{{ article.body }}
-				</p>
-				{% for key, tag in article.tags %}
-					{% if key is defined %}
-						<a href="{{ app.url_generator.generate('tagSearch', key) }}"></a>
+					<h2><a class="article" href="{{ app.url_generator.generate('renderArticle', {articleId: articleKey}) }}">{{ article.title }}</a></h2>
+					<p>
+						{{ article.body }}
+					</p>
+					{% if article.tags[''] is not defined %}
+						<p class="tag-text">
+							tags :
+							{% for key, tag in article.tags %}
+								<a class="tag" href="{{ app.url_generator.generate('tagSearch', {tagId: key}) }}">{{ tag }}</a>
+							{% endfor %}
+						</p>
 					{% endif %}
-				{% endfor %}
 			</article>
 		{% endfor %}
 	</section>
