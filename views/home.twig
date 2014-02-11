@@ -6,7 +6,7 @@
 	<section>
 		{% for articleKey, article in articles %}
 			<article>
-					<h2><a class="article" href="{{ app.url_generator.generate('renderArticle', {articleId: articleKey}) }}">{{ article.title }}</a></h2>
+					<h2><a class="article" href="{{ app.url_generator.generate('renderArticleById', {articleId: articleKey}) }}">{{ article.title }}</a></h2>
 					<p>
 						{{ article.body }}
 					</p>

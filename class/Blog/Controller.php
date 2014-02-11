@@ -37,4 +37,11 @@
 			$result = $this->app['sql']->prepareExec($sql, $arg)->fetch(PDO::FETCH_ASSOC);
 			return $result['type'];
 		}
+
+		public function redirect($route)
+		{
+			return $this->app->redirect(
+	            $this->app['url_generator']->generate($route)
+	        );
+		}
 	}

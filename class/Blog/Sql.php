@@ -39,10 +39,10 @@ Class Sql
 	/**
 	 * [prepareExec description]
 	 * @param  string $sql
-	 * @param  string $argument
-	 * @return string
+	 * @param  array $argument empty by default
+	 * @return PDO object
 	 */
-	public function prepareExec($sql, $argument)
+	public function prepareExec($sql, $argument = array())
 	{
 		$statement = $this->pdo->prepare($sql);
 		$statement->execute($argument);

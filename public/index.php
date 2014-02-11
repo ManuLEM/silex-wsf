@@ -30,7 +30,7 @@
 
 	$app->get('/admin', function() use($app) {
 		$c = new AdminController($app);
-		return $c->getArticle();
+		return $c->getArticleForm();
 	})
 	->bind('getAdmin');
 
@@ -51,6 +51,12 @@
 		return $c->postLogin();
 	})
 	->bind('postLogin');
+
+	$app->get('/logout', function () use ($app) {
+    	$c = new UserController($app);
+	    return $c->getLogout();
+	})
+	->bind('logout');
 
 	$app->get('/register', function() use($app) { 
 		$c = new UserController($app);
@@ -84,8 +90,8 @@
 
 	$app->get('/article/{articleId}', function($articleId) use($app) { 
 		$c = new HomeController($app);
-		return $c->renderArticle($articleId);
+		return $c->renderArticleById($articleId);
 	})
-	->bind('renderArticle');
+	->bind('renderArticleById');
 
 	$app->run();

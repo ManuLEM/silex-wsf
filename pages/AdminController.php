@@ -5,18 +5,21 @@
 	Class AdminController extends Controller
 	{
 		/**
-		 * [getArticle description]
+		 * [getArticleForm description]
 		 * @return [type] [description]
 		 */
-		public function getArticle()
+		public function getArticleForm()
 		{
 			if (!$this->isAdmin()) {
-				return $app->redirect(
-		            $app['url_generator']->generate('home')
+				return $this->app->redirect(
+		            $this->app['url_generator']->generate('home')
 		        );
 			}
 
-			$this->data['tags'] = $this->app['sql']->query('SELECT * FROM tags');
+			$article = new Article($this->app);
+
+			$this->data['tags'] = $article->getArticleForm();
+
 			return $this->app['twig']->render('admin.twig', $this->data);
 		}
 
@@ -28,8 +31,8 @@
 		public function postArticle()
 		{
 			if (!$this->isAdmin()) {
-				return $app->redirect(
-		            $app['url_generator']->generate('home')
+				return $this->app->redirect(
+		            $this->app['url_generator']->generate('home')
 		        );
 			}
 
@@ -37,55 +40,18 @@
 			$content = $this->app['request']->get('article');
 			$tags = $this->app['request']->get('tags');
 
-			if (!empty($title) && !empty($content)) {
-				$sql = "INSERT INTO articles (
-					id,
-					title,
-					body
-				)
-				VALUES (
-					NULL,
-					:title,
-					:content
-				)";
-				
-				$arguments = array (
-					':title' => $title,
-					':content' => $content
-				);
+			$article = new Article($this->app);
 
-				$this->app['sql']->prepareExec($sql, $arguments);
+			$this->data['tags'] = $article->insertArticle($title, $content, $tags);
 
-				$last = $this->app['sql']->lastId();
-
-				foreach ($tags as $tag) {
-					$query = "INSERT INTO articles_tags (
-						id,
-						id_articles,
-						id_tag
-					)
-					VALUES (
-						NULL,
-						:id_articles,
-						:tag
-					)";
-
-					$arguments = array (
-						':id_articles' => $last,
-						':tag' => $tag
-					);
-					$this->app['sql']->prepareExec($query, $arguments);
-				}
-			}
-
-			return $this->getArticle();
+			return $this->redirect('home');
 		}
 
 		public function getTags()
 		{
 			if (!$this->isAdmin()) {
-				return $app->redirect(
-		            $app['url_generator']->generate('home')
+				return $this->app->redirect(
+		            $this->app['url_generator']->generate('home')
 		        );
 			}
 			
@@ -95,30 +61,19 @@
 		public function postTags()
 		{
 			if (!$this->isAdmin()) {
-				return $app->redirect(
-		            $app['url_generator']->generate('home')
+				return $this->app->redirect(
+		            $this->app['url_generator']->generate('home')
 		        );
 			}
 			
-			$tag = $this->app['request']->get('tag');
+			$tagAdded = $this->app['request']->get('tag');
 
-			if (!empty($tag)) {
-				$sql = "INSERT INTO tags (
-					id,
-					name
-				)
-				VALUES (
-					NULL,
-					:name
-				)";
-				
-				$arguments = array (
-					':name' => $tag,
-				);
+			if (!empty($tagAdded)) {
+				$tag = new Tag($this->app);
 
-				$this->app['sql']->prepareExec($sql, $arguments);
+				$tag->insertTag($tagAdded);
 			}
 
-			return $this->getTags();
+			return $this->redirect('home');
 		}
 	}

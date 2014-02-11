@@ -8,6 +8,6 @@
 		"psr-0": {
 			"Blog\\": "class/"
 		},
-		"classmap": ["pages/"]
+		"classmap": ["pages/", "models/"]
 	}
 }

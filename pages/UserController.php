@@ -14,13 +14,9 @@ Class UserController extends Controller
 		$email =$this->app['request']->get('email');
 		$password =$this->app['request']->get('password');
 
-		$sql = 'SELECT id, email, password, name, type, salt FROM users WHERE email = :email';
-		$arguments = array(
-			':email' => $email
-		);
+		$users = new User($this->app);
 
-		$user = $this->app['sql']->prepareExec($sql, $arguments);
-		$user = $user->fetch(); 
+		$user = $users->checkEmail($email)->fetch(); 
 		// test if user exists
 		if ($user === false) {
 			$this->data['errors'] = 'Login or password incorrect';
@@ -32,7 +28,7 @@ Class UserController extends Controller
 		}
 
 		if (!empty($this->data['errors'])) {
-			return $this->getLogin();
+			return $this->redirect('home');
 		}
 
 		$user = array(
@@ -43,10 +39,15 @@ Class UserController extends Controller
 		
 		$this->app['session']->set('user', $user);
 
-		return $this->app->redirect(
-            $this->app['url_generator']->generate('home')
-        );
+		return $this->redirect('home');
 
+	}
+
+	public function getLogout()
+	{
+		$this->app['session']->set('user', null);
+
+		return $this->redirect('home');
 	}
 
 	public function getRegister()
@@ -68,13 +69,9 @@ Class UserController extends Controller
 
 
 		// Vérification email
-		$sql = "SELECT email FROM users WHERE email = :email";
+		$verif = new User($this->app);
 
-		$arguments = array(
-			':email' => $email
-		);
-
-		$emailVerif = $this->app['sql']->prepareExec($sql, $arguments);
+		$emailVerif = $verif->checkEmailExists($email);
 		
 		if ($emailVerif->fetch() !== false) {
 			$this->data['errors'][] = 'This email already exists.';
@@ -84,30 +81,12 @@ Class UserController extends Controller
 			return $this->getRegister();
 		}
 
+
 		// Insertion dans la BDD
-		$salt = uniqid();
-		$password = sha1($password.$salt);
+		$users = new User($this->app);
 
-		$sql = "INSERT INTO users(
-			email,
-			password,
-			name,
-			type,
-			salt
-		)
-		VALUES (
-			:email, :password, :name, :type, :salt
-		)";
-		
-		$arguments = array(
-			':email' => $email,
-			':password' => $password,
-			':name' => $name,
-			':type' => 'user',
-			':salt' => $salt
-		);
-		$this->app['sql']->prepareExec($sql, $arguments);
+		$users->insertUser($email, $password, $name);
 
-		return $this->app['twig']->render('user/register-success.twig', $this->data);
+		return $this->redirect('home');
 	}
 }
