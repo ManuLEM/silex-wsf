@@ -10,7 +10,7 @@
 					<p>
 						{{ article.body }}
 					</p>
-					{% if article.tags[''] is not defined %}
+					{% if article.tags is defined %}
 						<p class="tag-text">
 							tags :
 							{% for key, tag in article.tags %}

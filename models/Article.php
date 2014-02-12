@@ -28,7 +28,9 @@ class Article extends Model
 		foreach ($rows as $row) {
 			$articlesProcessed[$row['articlesId']]['title'] = $row['title'];
 			$articlesProcessed[$row['articlesId']]['body'] = $row['body'];
-			$articlesProcessed[$row['articlesId']]['tags'][$row['tagsId']] = $row['name'];
+			if (!empty($row['tagsId'])) {
+				$articlesProcessed[$row['articlesId']]['tags'][$row['tagsId']] = $row['name'];
+			}
 		}
 
 		return $articlesProcessed;

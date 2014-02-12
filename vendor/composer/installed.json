@@ -531,123 +531,115 @@
         ]
     },
     {
-        "name": "symfony/security-core",
-        "version": "v2.4.1",
-        "version_normalized": "2.4.1.0",
-        "target-dir": "Symfony/Component/Security/Core",
+        "name": "squizlabs/php_codesniffer",
+        "version": "1.5.2",
+        "version_normalized": "1.5.2.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/security-core.git",
-            "reference": "c0396b13041d8fcf187174d4740b5fabe2624b37"
+            "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+            "reference": "a76a39b317ce8106abe6264daa505e24e1731860"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/security-core/zipball/c0396b13041d8fcf187174d4740b5fabe2624b37",
-            "reference": "c0396b13041d8fcf187174d4740b5fabe2624b37",
+            "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/a76a39b317ce8106abe6264daa505e24e1731860",
+            "reference": "a76a39b317ce8106abe6264daa505e24e1731860",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.3"
-        },
-        "require-dev": {
-            "ircmaxell/password-compat": "1.0.*",
-            "psr/log": "~1.0",
-            "symfony/event-dispatcher": "~2.1",
-            "symfony/expression-language": "~2.4",
-            "symfony/http-foundation": "~2.4",
-            "symfony/validator": "~2.2"
+            "ext-tokenizer": "*",
+            "php": ">=5.1.2"
         },
         "suggest": {
-            "ircmaxell/password-compat": "For using the BCrypt password encoder in PHP <5.5",
-            "symfony/event-dispatcher": "",
-            "symfony/expression-language": "For using the expression voter",
-            "symfony/http-foundation": "",
-            "symfony/validator": "For using the user password constraint"
+            "phpunit/php-timer": "dev-master"
         },
-        "time": "2014-01-01 08:14:50",
+        "time": "2014-02-04 23:49:58",
+        "bin": [
+            "scripts/phpcs"
+        ],
         "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.4-dev"
-            }
-        },
         "installation-source": "dist",
         "autoload": {
-            "psr-0": {
-                "Symfony\\Component\\Security\\Core\\": ""
-            }
+            "classmap": [
+                "CodeSniffer.php",
+                "CodeSniffer/CLI.php",
+                "CodeSniffer/Exception.php",
+                "CodeSniffer/File.php",
+                "CodeSniffer/Report.php",
+                "CodeSniffer/Reporting.php",
+                "CodeSniffer/Sniff.php",
+                "CodeSniffer/Tokens.php",
+                "CodeSniffer/Reports/",
+                "CodeSniffer/CommentParser/",
+                "CodeSniffer/Tokenizers/",
+                "CodeSniffer/DocGenerators/",
+                "CodeSniffer/Standards/AbstractPatternSniff.php",
+                "CodeSniffer/Standards/AbstractScopeSniff.php",
+                "CodeSniffer/Standards/AbstractVariableSniff.php",
+                "CodeSniffer/Standards/IncorrectPatternException.php",
+                "CodeSniffer/Standards/Generic/Sniffs/",
+                "CodeSniffer/Standards/MySource/Sniffs/",
+                "CodeSniffer/Standards/PEAR/Sniffs/",
+                "CodeSniffer/Standards/PSR1/Sniffs/",
+                "CodeSniffer/Standards/PSR2/Sniffs/",
+                "CodeSniffer/Standards/Squiz/Sniffs/",
+                "CodeSniffer/Standards/Zend/Sniffs/"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "MIT"
+            "BSD-3-Clause"
         ],
         "authors": [
             {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "http://symfony.com/contributors"
+                "name": "Greg Sherwood",
+                "role": "lead"
             }
         ],
-        "description": "Symfony Security Component - Core Library",
-        "homepage": "http://symfony.com"
+        "description": "PHP_CodeSniffer tokenises PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+        "homepage": "http://www.squizlabs.com/php-codesniffer",
+        "keywords": [
+            "phpcs",
+            "standards"
+        ]
     },
     {
-        "name": "symfony/security-csrf",
-        "version": "v2.4.1",
-        "version_normalized": "2.4.1.0",
-        "target-dir": "Symfony/Component/Security/Csrf",
+        "name": "dg/twitter-php",
+        "version": "v3.2",
+        "version_normalized": "3.2.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/security-csrf.git",
-            "reference": "67c366a65a5bbcbcb2db7d4d4e45a16b85f24797"
+            "url": "https://github.com/dg/twitter-php.git",
+            "reference": "5ca5b8cb823972e1239656c5f3b17ddd28e6d816"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/security-csrf/zipball/67c366a65a5bbcbcb2db7d4d4e45a16b85f24797",
-            "reference": "67c366a65a5bbcbcb2db7d4d4e45a16b85f24797",
+            "url": "https://api.github.com/repos/dg/twitter-php/zipball/5ca5b8cb823972e1239656c5f3b17ddd28e6d816",
+            "reference": "5ca5b8cb823972e1239656c5f3b17ddd28e6d816",
             "shasum": ""
         },
-        "require": {
-            "php": ">=5.3.3",
-            "symfony/security-core": "~2.4"
-        },
-        "require-dev": {
-            "symfony/http-foundation": "~2.1"
-        },
-        "suggest": {
-            "symfony/http-foundation": "For using the class SessionTokenStorage."
-        },
-        "time": "2013-11-21 06:37:18",
+        "time": "2014-01-17 16:59:53",
         "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.4-dev"
-            }
-        },
         "installation-source": "dist",
         "autoload": {
-            "psr-0": {
-                "Symfony\\Component\\Security\\Csrf\\": ""
-            }
+            "classmap": [
+                "src/"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "MIT"
+            "BSD-3"
         ],
         "authors": [
             {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "http://symfony.com/contributors"
+                "name": "David Grudl",
+                "homepage": "http://davidgrudl.com"
             }
         ],
-        "description": "Symfony Security Component - CSRF Library",
-        "homepage": "http://symfony.com"
+        "description": "Small and easy Twitter wrapper for PHP.",
+        "homepage": "https://github.com/dg/twitter-php",
+        "keywords": [
+            "oauth",
+            "twitter"
+        ]
     }
 ]

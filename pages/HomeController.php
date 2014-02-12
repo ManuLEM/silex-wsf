@@ -35,6 +35,11 @@ use Blog\Controller;
 
 			$this->data['article'] = $article->getArticle($articleId);
 
+			$tag = new Tag($this->app);
+			$tags = $tag->getTagsArticle($articleId);
+
+			$this->data['tags'] = $tags;
+
 			return $this->app['twig']->render('article.twig', $this->data);
 		}
 	}
