@@ -94,4 +94,10 @@
 	})
 	->bind('renderArticleById');
 
+	$app->post('/article/{articleId}', function($articleId) use($app) { 
+		$c = new HomeController($app);
+		return $c->postComment($articleId);
+	})
+	->bind('postComment');
+
 	$app->run();

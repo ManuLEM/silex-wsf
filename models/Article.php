@@ -54,9 +54,9 @@ class Article extends Model
 	        ';
 
         $arg = array(':tagId' => $tagId);
-		$query = $this->app['sql']->prepareExec($sql, $arg);
-		
-		return $query->fetchAll(PDO::FETCH_ASSOC);
+		$query = $this->app['sql']->prepareExec($sql, $arg)->fetchAll(PDO::FETCH_ASSOC);
+
+		return $query;
 	}
 
 	public function getArticle($articleId)

@@ -7,8 +7,18 @@
 		<section id='tag-search'>
 			{% for article in tagSearch %}
 				<article>
-					<h2>{{ article.title }}</h2>
-					<p>{{ article.body }}</p>
+					<h2><a class="article" href="{{ app.url_generator.generate('renderArticleById', {articleId: article.articlesId}) }}">{{ article.title }}</a></h2>
+					<p>
+						{{ article.body }}
+					</p>
+					{% if article.tags is defined %}
+						<p class="tag-text">
+							tags :
+							{% for tag in article.tags %}
+								<a class="tag" href="{{ app.url_generator.generate('tagSearch', {tagId: tag.id_tag}) }}">{{ tag.name }}</a>
+							{% endfor %}
+						</p>
+					{% endif %}
 				</article>
 			{% endfor %}
 		</section>

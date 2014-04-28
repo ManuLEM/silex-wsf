@@ -6,18 +6,18 @@
 	<section>
 		{% for articleKey, article in articles %}
 			<article>
-					<h2><a class="article" href="{{ app.url_generator.generate('renderArticleById', {articleId: articleKey}) }}">{{ article.title }}</a></h2>
-					<p>
-						{{ article.body }}
+				<h2><a class="article" href="{{ app.url_generator.generate('renderArticleById', {articleId: articleKey}) }}">{{ article.title }}</a></h2>
+				<p>
+					{{ article.body }}
+				</p>
+				{% if article.tags is defined %}
+					<p class="tag-text">
+						tags :
+						{% for key, tag in article.tags %}
+							<a class="tag" href="{{ app.url_generator.generate('tagSearch', {tagId: key}) }}">{{ tag }}</a>
+						{% endfor %}
 					</p>
-					{% if article.tags is defined %}
-						<p class="tag-text">
-							tags :
-							{% for key, tag in article.tags %}
-								<a class="tag" href="{{ app.url_generator.generate('tagSearch', {tagId: key}) }}">{{ tag }}</a>
-							{% endfor %}
-						</p>
-					{% endif %}
+				{% endif %}
 			</article>
 		{% endfor %}
 	</section>

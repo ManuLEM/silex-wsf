@@ -24,10 +24,16 @@ use Blog\Controller;
 
 			$this->data['tagSearch'] = $article->tagSearch($tagId);
 
+			$tag = new Tag($this->app);
+
+			for ($i=0; $i < count($this->data['tagSearch']); $i++) {
+				$this->data['tagSearch'][$i]['tags']= $tag->getTagsArticle($this->data['tagSearch'][$i]['articlesId']);
+			}
+
 			return $this->app['twig']->render('tagSearch.twig', $this->data);
 		}
 
-		public function renderArticleById($articleId)
+		public function renderArticleById($articleId = null)
 		{
 			$this->data['user'] = $this->isLogged();
 
@@ -40,7 +46,28 @@ use Blog\Controller;
 
 			$this->data['tags'] = $tags;
 
+			$comment = new Comment($this->app);
+
+			$comments = $comment->getComments($articleId);
+
+			$this->data['comments'] = $comments;
+
 			return $this->app['twig']->render('article.twig', $this->data);
+		}
+		
+		public function postComment($articleId = null)
+		{
+			$this->data['user'] = $this->isLogged();
+
+			if( $this->isLogged() ){
+				// requete d'ajout de commentaire
+				if ($articleId) {
+					$comment = new Comment($this->app);
+					$comment->saveComment( $articleId, $this->app['request']->get('comment'), $this->data['user']['id'] );
+				}
+			}
+
+			return $this->redirect('renderArticleById', array('articleId' => $articleId));
 		}
 	}
 		

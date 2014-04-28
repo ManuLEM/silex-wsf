@@ -38,8 +38,13 @@
 			return $result['type'];
 		}
 
-		public function redirect($route)
-		{
+		public function redirect($route, $data = null)
+		{	
+			if ($data) {
+				return $this->app->redirect(
+		            $this->app['url_generator']->generate($route, $data)
+		        );
+			}
 			return $this->app->redirect(
 	            $this->app['url_generator']->generate($route)
 	        );
