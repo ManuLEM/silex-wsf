@@ -8,9 +8,8 @@
 			{% for comment in comments %}
 				<label>
 				<input type="checkbox" name="selectedComments[]" value="{{comment.commentId}}">
-					<a class="article" href="{{ app.url_generator.generate('renderArticleById', {articleId: comment.articleId}) }}">{{ comment.title }}</a><br>
-					{{ comment.username }}<br>
-					{{ comment.content }}
+					From : <span class="username">{{ comment.username }}</span> in <a class="article" href="{{ app.url_generator.generate('renderArticleById', {articleId: comment.articleId}) }}">{{ comment.title }}</a>
+					<div class="commentContent">{{ comment.content }}</div>
 				</label>
 				<br>
 			{% endfor %}

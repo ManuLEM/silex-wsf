@@ -76,4 +76,30 @@
 
 			return $this->redirect('home');
 		}
+
+		public function getCommentList()
+		{
+			if(!$this->isAdmin()){
+				return $this->redirect('home');
+			}
+
+			$comment = new Comment($this->app);
+
+			$this->data['comments'] = $comment->getAllComments();
+
+			return $this->app['twig']->render('commentList.twig', $this->data);
+		}
+
+		public function deleteComment($value='')
+		{
+			if(!$this->isAdmin()){
+				return $this->redirect('home');
+			}
+
+			$comment = new Comment($this->app);
+
+			$comment->removeComment($this->app['request']->get('selectedComments'));
+
+			return $this->redirect('getCommentList');
+		}
 	}

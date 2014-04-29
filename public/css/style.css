@@ -62,11 +62,11 @@ article, .commentList, .createArticle, .createTag{
 .createTag{
 	padding-top: 15px;
 }
-article a.article{
+a.article{
 	text-decoration: none;
 	color: #ff5a39;
 }
-article a.article:hover{
+a.article:hover{
 	text-decoration: underline;
 }
 #commentList{
@@ -93,4 +93,11 @@ article a.article:hover{
 	display: inline-block;
 	position: relative;
 	top: -100px;
+}
+.username{
+	color: #5b968c;
+}
+.commentContent{
+	margin-top: 10px;
+	padding-left: 20px;
 }

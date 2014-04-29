@@ -101,13 +101,13 @@
 	->bind('postComment');
 
 	$app->get('/admin/comment', function() use($app) { 
-		$c = new HomeController($app);
+		$c = new AdminController($app);
 		return $c->getCommentList();
 	})
 	->bind('getCommentList');
 
 	$app->post('/admin/comment', function() use($app) { 
-		$c = new HomeController($app);
+		$c = new AdminController($app);
 		return $c->deleteComment();
 	})
 	->bind('deleteComment');
