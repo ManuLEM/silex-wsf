@@ -35,7 +35,7 @@ nav a:hover{
 	max-width: 800px;
 	margin: auto;
 }
-h1{
+h1, h3{
 	font-weight: lighter;
 	color: #5b968c;
 }
@@ -53,11 +53,14 @@ a.tag:hover{
 	color: #464646;
 	border-bottom: 1px dotted #464646;
 }
-article{
+article, .commentList, .createArticle, .createTag{
 	border-bottom: 1px solid #cacaca;
 	border-top: 1px solid white;
 	background-color: rgba(255,255,255,0.7);
 	padding: 0 25px 15px 25px;
+}
+.createTag{
+	padding-top: 15px;
 }
 article a.article{
 	text-decoration: none;
@@ -65,4 +68,29 @@ article a.article{
 }
 article a.article:hover{
 	text-decoration: underline;
+}
+#commentList{
+	padding: 0;
+}
+#commentList li{
+	list-style-type: none;
+	min-height: 75px;
+	border-bottom: 1px solid #cacaca;
+	padding: 0 10px;
+}
+#commentList .name{
+	display: block;
+	margin-left: -10px;
+	color: #ff5a39;
+}
+.createArticle, .createTag{
+	text-align: center;
+}
+.createArticle input, .createArticle textarea{
+	margin: 10px 0;
+}
+.middle{
+	display: inline-block;
+	position: relative;
+	top: -100px;
 }

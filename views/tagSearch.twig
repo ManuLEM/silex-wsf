@@ -3,7 +3,7 @@
 
 {% block content %}
 	{% if tagSearch[0] is defined %}
-		<h1>results for tag "{{ tagSearch[0]['name'] }}"</h1>
+		<h1>Résultats pour le tag "{{ tagSearch[0]['name'] }}"</h1>
 		<section id='tag-search'>
 			{% for article in tagSearch %}
 				<article>

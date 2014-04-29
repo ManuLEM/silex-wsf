@@ -1,0 +1,20 @@
+{% extends 'layout.twig' %}
+{% block title %}Commentaires{% endblock %}
+
+{% block content %}
+	<h1>Liste des commentaires</h1>
+	<section class="commentList">
+		<form action="" method="post">
+			{% for comment in comments %}
+				<label>
+				<input type="checkbox" name="selectedComments[]" value="{{comment.commentId}}">
+					<a class="article" href="{{ app.url_generator.generate('renderArticleById', {articleId: comment.articleId}) }}">{{ comment.title }}</a><br>
+					{{ comment.username }}<br>
+					{{ comment.content }}
+				</label>
+				<br>
+			{% endfor %}
+			<input type="submit" value="Supprimer">
+		</form>
+	</section>
+{% endblock %}

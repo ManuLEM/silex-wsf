@@ -2,16 +2,20 @@
 {% block title %}Add Artcile{% endblock %}
 
 {% block content %}
-	<form action="" method="post">
-		<label for="title">title : </label>
-		<input type="text" name="title" />
-		<label for="article">article : </label>
-		<textarea name="article"></textarea>
-		<select name="tags[]" multiple>
-			{% for tag in tags %}
-				<option value="{{ tag.id }}">{{ tag.name }}</option>
-			{% endfor %}
-		</select>
-		<input type="submit" value="send">
-	</form>
+	<h1>Ajouter Un Article</h1>
+	<section class="createArticle">
+		<form action="" method="post">
+			<label for="title">titre : </label>
+			<input type="text" name="title" id="title" /><br>
+			<label for="article" class="middle">article : </label>
+			<textarea cols="75" rows="5" name="article" id="article" ></textarea><br>
+			<label for="tags">tags : </label>
+			<select name="tags[]" id="tags" multiple>
+				{% for tag in tags %}
+					<option value="{{ tag.id }}">{{ tag.name }}</option>
+				{% endfor %}
+			</select><br>
+			<input type="submit" value="send">
+		</form>
+	</section>
 {% endblock %}

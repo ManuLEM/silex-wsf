@@ -1,5 +1,5 @@
 {% extends 'layout.twig' %}
-{% block title %}Add Artcile{% endblock %}
+{% block title %}{{ article.title }}{% endblock %}
 
 {% block content %}
 	<article>
@@ -11,23 +11,26 @@
 			<p>
 				tags :
 				{% for tag in tags %}
-					<a class="tag" href="{{ app.url_generator.generate('tagSearch', {tagId: tag.id}) }}">{{ tag.name }}</a>
+					<a class="tag" href="{{ app.url_generator.generate('tagSearch', {tagId: tag.id_tag}) }}">{{ tag.name }}</a>
 				{% endfor %}
 			</p>
 		{% endif %}
 		<section>
 			{% if comments is defined and comments is not empty %}
 				<h3>Commentaires :</h3>
-				<ul>
+				<ul id="commentList">
 					{% for comment in comments %}
-						<li>{{ comment.content }}</li>
+						<li>
+							<span class="name">{{ comment.username }}</span>
+							{{ comment.content }}
+						</li>
 					{% endfor %}
 				</ul>
 			{% endif %}
 			{% if user is not empty %}
 				<h3>Ajouter un commentaire :</h3>
 				<form action="" method="post">
-					<textarea name="comment"></textarea>
+					<textarea cols="75" rows="5" name="comment"></textarea><br>
 					<input type="submit" value="Commenter">
 				</form>
 			{% endif %}

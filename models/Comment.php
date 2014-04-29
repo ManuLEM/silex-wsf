@@ -40,15 +40,67 @@ class Comment extends Model
 
 	public function getComments($articleId)
 	{
-		$sql = 'SELECT *
-		FROM comments, comments_users_articles
-		WHERE comments.id = comments_users_articles.id_comment
-		AND comments_users_articles.id_article = :id';
+		$sql = 'SELECT
+	            comments.id,
+	            content,
+	            users.name as username
+	        FROM comments
+	        LEFT JOIN comments_users_articles
+	        ON comments_users_articles.id_comment = comments.id
+			LEFT JOIN users
+			ON comments_users_articles.id_user = users.id
+			LEFT JOIN articles
+			ON comments_users_articles.id_article = articles.id
+			WHERE articles.id = :articleId
+			ORDER BY comments.id
+		';
 
 		$arg = array(
-			':id' => $articleId
+			':articleId' => $articleId
 		);
 
 		return $this->app['sql']->prepareExec($sql, $arg)->fetchAll();
+	}
+
+	public function getAllComments()
+	{
+		$sql = 'SELECT
+	            comments.id as commentId,
+	            content,
+	            users.name as username,
+	            articles.title as title,
+	            articles.id as articleId
+	        FROM comments
+	        LEFT JOIN comments_users_articles
+	        ON comments_users_articles.id_comment = comments.id
+			LEFT JOIN users
+			ON comments_users_articles.id_user = users.id
+			LEFT JOIN articles
+			ON comments_users_articles.id_article = articles.id
+			ORDER BY comments.id
+		';
+
+		return $this->app['sql']->prepareExec($sql)->fetchAll();
+	}
+
+	public function removeComment( $commentIds = array() )
+	{
+		foreach ($commentIds as $comment => $id) {
+			$sql = 'DELETE FROM comments WHERE id = :commentId';
+
+			$arg = array(
+				':commentId' => $id
+			);
+
+			$this->app['sql']->prepareExec($sql, $arg)->fetchAll();
+
+			$query = 'DELETE FROM comments_users_articles WHERE id_comment = :commentId';
+
+			$argument = array(
+				':commentId' => $id
+			);
+
+			$this->app['sql']->prepareExec($query, $argument)->fetchAll();
+		}
 	}
 }

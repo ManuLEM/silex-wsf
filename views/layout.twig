@@ -15,13 +15,14 @@
 	<header>
 		<nav>
 			<ul>
-				<li><a href="{{ app.url_generator.generate('home') }}">Home</a></li>
+				<li><a href="{{ app.url_generator.generate('home') }}">Acceuil</a></li>
 				{% if user is empty %}
 					<li><a href="{{ app.url_generator.generate('login') }}">Login</a></li>
 					<li><a href="{{ app.url_generator.generate('register') }}">Créer un compte</a></li>
 				{% elseif type == 'admin' %}
 					<li><a href="{{ app.url_generator.generate('getAdmin') }}">Admin</a></li>
-					<li><a href="{{ app.url_generator.generate('getTags') }}">Add tag</a></li>
+					<li><a href="{{ app.url_generator.generate('getTags') }}">Ajouter tag</a></li>
+					<li><a href="{{ app.url_generator.generate('getCommentList') }}">Commentaires</a></li>
 					<li><a href="{{ app.url_generator.generate('logout') }}">Logout</a></li>
 				{% else %}
 					<li><a href="{{ app.url_generator.generate('logout') }}">Logout</a></li>
